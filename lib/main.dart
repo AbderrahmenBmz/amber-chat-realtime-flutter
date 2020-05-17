@@ -1,3 +1,4 @@
+import 'package:chatapp/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,9 +13,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Amber Chat',
       theme: ThemeData(
-        primarySwatch: Colors.amber,
+        primaryColor: Colors.amber,
       ),
-      home: Text('Init Project Setup'),
+      home: WelcomeScreen(),
     );
   }
 }
