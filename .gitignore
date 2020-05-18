@@ -34,6 +34,7 @@ pubspec.yaml
 
 # Web related
 lib/generated_plugin_registrant.dart
+lib/constants.dart
 
 # Symbolication related
 app.*.symbols

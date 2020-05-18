@@ -5,10 +5,10 @@ import 'package:chatapp/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(AmberChat());
 }
 
-class MyApp extends StatelessWidget {
+class AmberChat extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -18,8 +18,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.amber,
       ),
-      home: ChatScreen()
+      initialRoute: WelcomeScreen.id,
+      routes: {
+        WelcomeScreen.id: (context) => WelcomeScreen(),
+        LoginScreen.id: (context) => WelcomeScreen(),
+        RegistrationScreen.id: (context) => RegistrationScreen(),
+        ChatScreen.id : (context) => ChatScreen(),
+      },
     );
   }
 }
-
