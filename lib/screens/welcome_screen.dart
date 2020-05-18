@@ -1,7 +1,9 @@
+import 'package:chatapp/screens/login_screen.dart';
+import 'package:chatapp/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
- static String  id = 'welcome_screen'; 
+  static const String id = 'welcome_screen';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +44,7 @@ class WelcomeScreen extends StatelessWidget {
                   child: MaterialButton(
                     onPressed: () {
                       //Go to login screen.
+                      Navigator.pushNamed(context, LoginScreen.id);
                     },
                     minWidth: 250.0,
                     height: 42.0,
@@ -55,7 +58,7 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-               Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(vertical: 16.0),
                 child: Material(
                   elevation: 5.0,
@@ -64,6 +67,7 @@ class WelcomeScreen extends StatelessWidget {
                   child: MaterialButton(
                     onPressed: () {
                       //Go to login screen.
+                      Navigator.pushNamed(context, RegistrationScreen.id);
                     },
                     minWidth: 250.0,
                     height: 42.0,
