@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
-  static const String  id = 'login_screen'; 
+  static const String id = 'login_screen';
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -17,9 +17,12 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              child: Image.asset('assets/images/amber_logo.png'),
-              height: 150.0,
+            Hero(
+              tag: 'amber_logo',
+              child: Container(
+                child: Image.asset('assets/images/amber_logo.png'),
+                height: 150.0,
+              ),
             ),
             SizedBox(
               height: 30.0,
@@ -48,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: 8.0,
             ),
-               TextField(
+            TextField(
               onChanged: (value) {
                 //Do something with the user input.
               },
@@ -66,6 +69,28 @@ class _LoginScreenState extends State<LoginScreen> {
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.amber, width: 2.0),
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 24.0,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 16.0),
+              child: Material(
+                color: Colors.amber,
+                borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                elevation: 5.0,
+                child: MaterialButton(
+                  onPressed: () {
+                    //Implement login functionality.
+                  },
+                  minWidth: 200.0,
+                  height: 42.0,
+                  child: Text('Log In',
+                      style: TextStyle(
+                        color: Colors.white,
+                      )),
                 ),
               ),
             ),
