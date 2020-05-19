@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "533848060545",
+    "firebase_url": "https://cosmosappchat.firebaseio.com",
+    "project_id": "cosmosappchat",
+    "storage_bucket": "cosmosappchat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533848060545:android:4c9ed6d7f5004afff11380",
+        "android_client_info": {
+          "package_name": "com.cosmos.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "533848060545-q6ef7ehv13sgrcq9rcug6mgo48k8b1d1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cosmos.chatapp",
+            "certificate_hash": "fb1cd68c6c1543e064a03682678f1f6ac70bfe0a"
+          }
+        },
+        {
+          "client_id": "533848060545-feun710leff3fg4ugnqfed9rnqdt4tju.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAadrHunUWOkUo-u7HWSrlORmOYBgybaxA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "533848060545-feun710leff3fg4ugnqfed9rnqdt4tju.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
