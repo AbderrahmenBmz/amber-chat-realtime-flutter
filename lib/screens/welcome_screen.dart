@@ -70,11 +70,13 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  Hero(
-                    tag: 'amber_logo',
-                    child: Container(
-                        child: Image.asset('assets/images/amber_logo.png'),
-                        height: animation.value * 100),
+                  Flexible(
+                    child: Hero(
+                      tag: 'amber_logo',
+                      child: Container(
+                          child: Image.asset('assets/images/amber_logo.png'),
+                          height: animation.value * 100),
+                    ),
                   ),
                   SizedBox(
                     width: 20,
@@ -114,5 +116,3 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     );
   }
 }
-
-

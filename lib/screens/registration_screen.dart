@@ -29,11 +29,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Hero(
-                tag: 'amber_logo',
-                child: Container(
-                  height: 200.0,
-                  child: Image.asset('assets/images/amber_logo.png'),
+              Flexible(
+                child: Hero(
+                  tag: 'amber_logo',
+                  child: Container(
+                    height: 200.0,
+                    child: Image.asset('assets/images/amber_logo.png'),
+                  ),
                 ),
               ),
               SizedBox(
@@ -58,7 +60,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 height: 24.0,
               ),
               RoundedButton(
-                //add keyboard pass 
+                  //add keyboard pass
                   title: 'Register',
                   color: Colors.blueAccent,
                   onPressed: () async {
