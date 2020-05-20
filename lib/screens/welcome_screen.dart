@@ -1,4 +1,4 @@
-import 'package:chatapp/components/rounded_bottun.dart';
+import 'package:chatapp/components/rounded_button.dart';
 import 'package:chatapp/screens/login_screen.dart';
 import 'package:chatapp/screens/registration_screen.dart';
 import 'package:flutter/material.dart';

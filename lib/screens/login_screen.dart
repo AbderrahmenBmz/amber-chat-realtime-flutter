@@ -1,4 +1,4 @@
-import 'package:chatapp/components/rounded_bottun.dart';
+import 'package:chatapp/components/rounded_button.dart';
 import 'package:chatapp/constants.dart';
 import 'package:chatapp/screens/chat_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -42,6 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 30.0,
               ),
               TextField(
+                 keyboardType: TextInputType.emailAddress,
                   onChanged: (value) {
                     email = value;
                   },
@@ -51,6 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 8.0,
               ),
               TextField(
+                obscureText: true,
                 onChanged: (value) {
                   password = value;
                 },
