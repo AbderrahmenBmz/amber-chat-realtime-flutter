@@ -1,6 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:chatapp/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final _firestore = Firestore.instance;
@@ -21,6 +21,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
+
     getCurrentUser();
   }
 
@@ -29,47 +30,28 @@ class _ChatScreenState extends State<ChatScreen> {
       final user = await _auth.currentUser();
       if (user != null) {
         loggedInUser = user;
-        print(loggedInUser.email);
       }
     } catch (e) {
       print(e);
     }
   }
 
-  void getMessages() async {
-    final messages = await _firestore.collection('messages').getDocuments();
-    for (var message in messages.documents) {
-      print(message.data);
-    }
-  }
-
-  @override
-  void dispose() {
-    messageTextController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          leading: null,
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(
-                  Icons.close,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  _auth.signOut();
-                  Navigator.pop(context);
-                }),
-          ],
-          title: Text(
-            'Amber Chat',
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Theme.of(context).primaryColor),
+        leading: null,
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.close , color: Colors.white,),
+              onPressed: () {
+                _auth.signOut();
+                Navigator.pop(context);
+              }),
+        ],
+        title: Text('Amber Chat', style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),),
+        backgroundColor: Colors.amber,
+      ),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -122,23 +104,24 @@ class MessagesStream extends StatelessWidget {
         if (!snapshot.hasData) {
           return Center(
             child: CircularProgressIndicator(
-              backgroundColor: Colors.amber,
+              backgroundColor: Colors.lightBlueAccent,
             ),
           );
         }
-        final messages =
-            snapshot.data.documents.reversed; // data(async snapshot) from Flutter
+        final messages = snapshot.data.documents.reversed;
         List<MessageBubble> messageBubbles = [];
         for (var message in messages) {
-          final messageText =
-              message.data['text']; // data(document snapshot) from firebase
+          final messageText = message.data['text'];
           final messageSender = message.data['sender'];
 
           final currentUser = loggedInUser.email;
+
           final messageBubble = MessageBubble(
-              sender: messageSender,
-              text: messageText,
-              isMe: currentUser == messageSender);
+            sender: messageSender,
+            text: messageText,
+            isMe: currentUser == messageSender,
+          );
+
           messageBubbles.add(messageBubble);
         }
         return Expanded(
@@ -155,47 +138,46 @@ class MessagesStream extends StatelessWidget {
 
 class MessageBubble extends StatelessWidget {
   MessageBubble({this.sender, this.text, this.isMe});
+
   final String sender;
   final String text;
   final bool isMe;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(10.0),
       child: Column(
-        // mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment:
-            isMe ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+            isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            'from : $sender',
+            sender,
             style: TextStyle(
               fontSize: 12.0,
-              color: Colors.black38,
+              color: Colors.black54,
             ),
           ),
           Material(
-            elevation: 5.0,
             borderRadius: isMe
                 ? BorderRadius.only(
-                    topRight: Radius.circular(30.0),
-                    bottomRight: Radius.circular(30.0),
-                  )
-                : BorderRadius.only(
                     topLeft: Radius.circular(30.0),
                     bottomLeft: Radius.circular(30.0),
+                    bottomRight: Radius.circular(30.0))
+                : BorderRadius.only(
+                    bottomLeft: Radius.circular(30.0),
+                    bottomRight: Radius.circular(30.0),
+                    topRight: Radius.circular(30.0),
                   ),
+            elevation: 5.0,
             color: isMe ? Colors.amber : Colors.white,
             child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 10.0,
-                vertical: 20.0,
-              ),
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
               child: Text(
                 text,
                 style: TextStyle(
+                  color: isMe ? Colors.white : Colors.black54,
                   fontSize: 15.0,
-                  color: isMe ? Colors.white : Colors.grey,
                 ),
               ),
             ),
